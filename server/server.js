@@ -11,10 +11,13 @@ var appRoutes = require('./routes');
 var Router = require('express').Router();
 
 var corsOptions = {
-	origin: ['http://localhost:3000','*'],
+	origin: ['https://atomz.netlify.com','*'],
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	next();
+  });
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors(corsOptions));

@@ -1,5 +1,5 @@
 const userModel = require("../models/user");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 
 const findUserWithId = function (_id) {

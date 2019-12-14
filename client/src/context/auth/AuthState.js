@@ -14,6 +14,7 @@ import {
   CLEAR_ERRORS
 } from '../types';
 
+const baseUrl = "https://projectsentinel.herokuapp.com"
 const AuthState = props => {
   const initialState = {
     token: localStorage.getItem('token'),
@@ -30,7 +31,7 @@ const AuthState = props => {
     setAuthToken(localStorage.token);
 
     try {
-      const res = await axios.get('http://localhost:8080/api/user/login');
+      const res = await axios.get(`${baseUrl}/api/user/login`);
 
       dispatch({
         type: USER_LOADED,
@@ -50,7 +51,7 @@ const AuthState = props => {
     };
 
     try {
-      const res = await axios.post('http://localhost:8080/api/user/signup', formData, config);
+      const res = await axios.post(`${baseUrl}/api/user/signup`, formData, config);
     console.log(res)
       dispatch({
         type: REGISTER_SUCCESS,
@@ -76,7 +77,7 @@ const AuthState = props => {
     };
 
     try {
-      const res = await axios.post('http://localhost:8080/api/user/login', formData, config);
+      const res = await axios.post(`${baseUrl}/api/user/login`, formData, config);
     console.log(res)
       dispatch({
         type: LOGIN_SUCCESS,
